@@ -9,7 +9,7 @@
       <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign in</h1>
       <p class="mt-2 text-sm text-gray-600 dark:text-neutral-400">
         Don't have an account yet?
-        <a class="text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="#">
+        <a class="text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="{{ route('signup') }}">
           Sign up here
         </a>
       </p>
@@ -17,13 +17,17 @@
 
     <div class="mt-5">
       <!-- Form -->
-      <form>
+      <form action="{{ route('login') }}" method="POST">
+        @csrf
         <div class="grid gap-y-4">
           <!-- Form Group -->
           <div>
-            <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
+            <label for="username" class="block text-sm mb-2 dark:text-white">Username</label>
             <div class="relative">
-              <input type="email" id="email" name="email" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" required aria-describedby="email-error">
+              <input type="text" id="username" name="username" value="{{ old('username') }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" required>
+              @error('username')
+                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
+              @enderror
             </div>
           </div>
           <!-- End Form Group -->
@@ -35,7 +39,10 @@
               <a class="text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="#">Forgot password?</a>
             </div>
             <div class="relative">
-              <input type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" required aria-describedby="password-error">
+              <input type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" required>
+              @error('password')
+                <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
+              @enderror
             </div>
           </div>
           <!-- End Form Group -->

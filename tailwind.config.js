@@ -7,6 +7,8 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./node_modules/preline/dist/*.js",
+    "./node_modules/preline/dist/*.mjs", // Add this for v3
+
   ],
   theme: {
     extend: {
@@ -27,7 +29,7 @@ export default {
     },
   },
   darkMode: ['class', '[data-mode="light"]'],
-  // plugins: [
-  //   require('preline/plugin'),
-  // ]
+  plugins: [
+    require('preline/plugin'),
+  ]
 }
