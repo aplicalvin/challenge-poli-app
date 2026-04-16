@@ -8,49 +8,74 @@
 </head>
 
 <body class="p-8">
-
-    <h1 class="text-3xl font-bold underline mb-6">
-        Hello world!
+    <h1 class="text-3xl font-bold underline text-blue-600">
+        Hello world! Tailwind is working!
     </h1>
 
-    <!-- Actual Preline Alerts -->
-    <div class="flex flex-col gap-y-4">
-        <!-- Primary Alert -->
-        <div class="bg-blue-100 border border-blue-200 text-sm text-blue-800 rounded-lg p-4" role="alert">
-            <span class="font-bold">Primary</span> alert! You should check in on some of those fields below.
-        </div>
-
-        <!-- Success Alert -->
-        <div class="bg-green-100 border border-green-200 text-sm text-green-800 rounded-lg p-4" role="alert">
-            <span class="font-bold">Success</span> alert! You should check in on some of those fields below.
-        </div>
-
-        <!-- Danger Alert -->
-        <div class="bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4" role="alert">
-            <span class="font-bold">Danger</span> alert! You should check in on some of those fields below.
-        </div>
-
-        <!-- Warning Alert -->
-        <div class="bg-yellow-100 border border-yellow-200 text-sm text-yellow-800 rounded-lg p-4" role="alert">
-            <span class="font-bold">Warning</span> alert! You should check in on some of those fields below.
-        </div>
-
-        <!-- With Dismiss Button -->
-        <div class="bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4" role="alert">
-            <span class="font-bold">Dismissible</span> alert!
+    <!-- Test button with Preline class -->
+    <div>
+        <!-- Button Group -->
+        <div class="inline-flex flex-wrap gap-2">
             <button type="button"
-                class="ms-auto -mx-1.5 -my-1.5 bg-teal-100 text-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 p-1.5 hover:bg-teal-200 inline-flex items-center justify-center h-8 w-8"
-                data-hs-remove-element=".alert">
-                <span class="sr-only">Dismiss</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-line-8 text-foreground hover:border-primary-hover hover:text-primary-hover focus:outline-hidden focus:border-primary-focus focus:text-primary-focus disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-line-5 text-muted-foreground-1 hover:border-line-8 hover:text-foreground focus:outline-hidden focus:border-line-8 focus:text-foreground disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-teal-500 text-teal-500 hover:border-teal-400 hover:text-teal-400 focus:outline-hidden focus:border-teal-400 focus:text-teal-400 disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-primary text-primary hover:border-primary-hover hover:text-primary-hover focus:outline-hidden focus:border-primary-focus focus:text-primary-focus disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400 focus:outline-hidden focus:border-red-400 focus:text-red-400 disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-yellow-500 text-yellow-500 hover:border-yellow-400 focus:outline-hidden focus:border-yellow-400 focus:text-yellow-400 disabled:opacity-50 disabled:pointer-events-none">
+                Button
+            </button>
+            <button type="button"
+                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-line-inverse text-foreground-inverse hover:border-line-inverse/70 hover:text-foreground-inverse/70 focus:outline-hidden focus:border-line-inverse/70 focus:text-foreground-inverse/70 disabled:opacity-50 disabled:pointer-events-none">
+                Button
             </button>
         </div>
+        <!-- End Button Group -->
     </div>
-
+    <div>
+        <ol class="flex items-center whitespace-nowrap ">
+            <li class="inline-flex items-center">
+                <a class="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
+                    href="#">
+                    Home
+                </a>
+                <svg class="shrink-0 mx-2 size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </li>
+            <li class="inline-flex items-center">
+                <a class="flex items-center text-sm text-muted-foreground-1 hover:text-primary-focus focus:outline-hidden focus:text-primary-focus"
+                    href="#">
+                    App Center
+                    <svg class="shrink-0 mx-2 size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </a>
+            </li>
+            <li class="inline-flex items-center text-sm font-semibold text-foreground truncate" aria-current="page">
+                Application
+            </li>
+        </ol>
+    </div>
 </body>
 
 </html>
