@@ -1,2 +1,3 @@
 import './bootstrap';
-import 'preline';
+// index.js
+import 'preline'
