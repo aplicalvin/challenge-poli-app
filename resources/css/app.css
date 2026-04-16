@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import Preline CSS for v4 */
+@import 'preline/css/preline.css';

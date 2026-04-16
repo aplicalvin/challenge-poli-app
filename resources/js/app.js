@@ -1,3 +1,8 @@
 import './bootstrap';
-// index.js
-import 'preline'
+import 'preline';
+
+window.addEventListener('load', () => {
+  if (window.HSStaticMethods) {
+    window.HSStaticMethods.autoInit();
+  }
+});
