@@ -14,5 +14,17 @@ class Dokter extends Model
         'alamat',
         'no_hp',
         'no_ktp',
+        'added_by',
+        'edited_by',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class, 'id_poli');
+    }
 }

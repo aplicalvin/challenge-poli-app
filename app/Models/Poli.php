@@ -13,4 +13,14 @@ class Poli extends Model
         'added_by',
         'edited_by',
     ];
+
+    public function adder()
+    {
+        return $this->belongsTo(User::class, 'added_by');
+    }
+
+    public function editor()
+    {
+        return $this->belongsTo(User::class, 'edited_by');
+    }
 }

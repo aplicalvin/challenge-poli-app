@@ -22,14 +22,22 @@ Route::middleware(['auth'])->group(function () {
     
     // Admin Routes
     Route::middleware(['role:admin'])->prefix('admin')->group(function () {
-        Route::get('/', function () {
+        Route::get('/dashboard', function () {
             return view('admin.dashboard');
         })->name('admin.dashboard');
 
-        Route::get('/poli', function () { return view('admin.poli'); })->name('admin.poli');
-        Route::get('/dokter', function () { return view('admin.dokter'); })->name('admin.dokter');
-        Route::get('/staff', function () { return view('admin.staff'); })->name('admin.staff');
-        Route::get('/pasien', function () { return view('admin.pasien'); })->name('admin.pasien');
+        Route::resource('poli', App\Http\Controllers\PoliController::class)->names([
+            'index' => 'admin.poli'
+        ]);
+        Route::resource('dokter', App\Http\Controllers\DokterController::class)->names([
+            'index' => 'admin.dokter'
+        ]);
+        Route::resource('staff', App\Http\Controllers\StaffController::class)->names([
+            'index' => 'admin.staff'
+        ]);
+        Route::resource('pasien', App\Http\Controllers\PasienController::class)->names([
+            'index' => 'admin.pasien'
+        ]);
     });
 
     // Doctor & Penjadwalan Routes

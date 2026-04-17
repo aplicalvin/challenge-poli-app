@@ -14,5 +14,12 @@ class Pasien extends Model
         'no_ktp',
         'no_hp',
         'no_rm',
+        'added_by',
+        'edited_by',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

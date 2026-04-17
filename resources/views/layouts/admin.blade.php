@@ -95,8 +95,22 @@
     <!-- Modal Placeholder -->
     @yield('modals')
 
+    <!-- Global Delete Confirmation Modal -->
+    <x-popupmodal id="hs-delete-confirmation-modal" title="Konfirmasi Penghapusan">
+      <div class="p-4 text-center">
+        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+        </svg>
+        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah Anda yakin ingin menghapus data ini?</h3>
+      </div>
+      @slot('footer')
+        <button id="confirm-delete-btn" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-hidden focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+          Ya, Saya Yakin
+        </button>
+      @endslot
+    </x-popupmodal>
 
-
+    <x-toast />
 </body>
 
 </html>
