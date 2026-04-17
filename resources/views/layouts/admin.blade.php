@@ -111,6 +111,7 @@
     </x-popupmodal>
 
     <x-toast />
+    @stack('scripts')
 </body>
 
 </html>

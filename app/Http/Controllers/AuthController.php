@@ -70,7 +70,7 @@ class AuthController extends Controller
     protected function redirectUser($user)
     {
         return match ($user->role) {
-            'admin' => redirect()->intended('/admin'),
+            'admin' => redirect()->intended('/admin/dashboard'),
             'dokter' => redirect()->intended('/doctor'),
             'pasien' => redirect()->intended('/patient'),
             'apoteker' => redirect()->intended('/pharmacist'),

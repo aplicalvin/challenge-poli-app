@@ -31,6 +31,35 @@
         </div>
         <!-- End Header -->
 
+        <!-- Filters -->
+        <div class="px-6 py-4 border-b border-gray-200 dark:border-neutral-700">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="grow relative">
+              <input type="text" id="user-search" placeholder="Cari username atau email..." 
+                     class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
+                <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </div>
+            </div>
+            <div class="sm:w-48">
+              <select id="user-role-filter" 
+                      class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                <option value="">Semua Role</option>
+                <option value="admin">Admin</option>
+                <option value="dokter">Dokter</option>
+                <option value="pasien">Pasien</option>
+                <option value="apoteker">Apoteker</option>
+                <option value="kasir">Kasir</option>
+              </select>
+            </div>
+            <button type="button" onclick="resetFilters()"
+                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700">
+              Reset
+            </button>
+          </div>
+        </div>
+        <!-- End Filters -->
+
         <!-- Table -->
         <div id="table-container">
           @include('admin.users-table')
@@ -124,3 +153,31 @@
   @endslot
 </x-popupmodal>
 @endsection
+
+@push('scripts')
+<script>
+  let searchTimer;
+  const searchInput = document.getElementById('user-search');
+  const roleFilter = document.getElementById('user-role-filter');
+
+  function triggerFilter() {
+    const search = searchInput.value;
+    const role = roleFilter.value;
+    
+    window.CrudHandler.refreshTable('{{ route('admin.users') }}', 'table-container', { search, role });
+  }
+
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(triggerFilter, 500); // 500ms debounce
+  });
+
+  roleFilter.addEventListener('change', triggerFilter);
+
+  function resetFilters() {
+    searchInput.value = '';
+    roleFilter.value = '';
+    triggerFilter();
+  }
+</script>
+@endpush

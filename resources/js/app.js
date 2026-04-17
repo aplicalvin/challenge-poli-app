@@ -279,6 +279,29 @@ window.CrudHandler = {
         document.getElementById('edit-user-role').value = role;
 
         this.openModal('hs-edit-user-modal');
+    },
+
+    async refreshTable(url, containerId, params = {}) {
+        const queryParams = new URLSearchParams(params).toString();
+        const fullUrl = queryParams ? `${url}?${queryParams}` : url;
+
+        try {
+            const response = await axios.get(fullUrl, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+
+            if (response.data.success && response.data.html) {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = response.data.html;
+                    
+                    // Re-init Preline components
+                    if (window.HSStaticMethods) window.HSStaticMethods.autoInit();
+                }
+            }
+        } catch (error) {
+            console.error('Table refresh failed:', error);
+        }
     }
 };
 
