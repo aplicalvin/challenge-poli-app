@@ -12,4 +12,19 @@ class JadwalJaga extends Model
         'id_dokter',
         'id_ruang',
     ];
+
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class, 'id_shift');
+    }
+
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class, 'id_dokter');
+    }
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class, 'id_ruang');
+    }
 }

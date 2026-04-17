@@ -12,4 +12,9 @@ class Ruang extends Model
         'id_poli',
         'created_by',
     ];
+
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class, 'id_poli');
+    }
 }

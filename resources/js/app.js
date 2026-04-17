@@ -206,6 +206,79 @@ window.CrudHandler = {
                     confirmBtn.innerHTML = 'Ya, Saya Yakin';
                 }
             });
+    },
+
+    // --- Penjadwalan Helpers ---
+    openEditShiftModal(id, nama, masuk, keluar, hari) {
+        const form = document.getElementById('edit-shift-form');
+        if (!form) return;
+
+        form.action = `/penjadwalan/shift/${id}`;
+        document.getElementById('edit-shift-nama').value = nama;
+        document.getElementById('edit-shift-masuk').value = masuk;
+        document.getElementById('edit-shift-keluar').value = keluar;
+        document.getElementById('edit-shift-hari').value = hari;
+
+        this.openModal('hs-edit-shift-modal');
+    },
+
+    openEditJadwalModal(id, shiftId, dokterId, ruangId) {
+        const form = document.getElementById('edit-jadwal-form');
+        if (!form) return;
+
+        form.action = `/penjadwalan/jadwal/${id}`;
+        document.getElementById('edit-jadwal-shift').value = shiftId;
+        document.getElementById('edit-jadwal-dokter').value = dokterId;
+        document.getElementById('edit-jadwal-ruang').value = ruangId;
+
+        this.openModal('hs-edit-jadwal-modal');
+    },
+
+    openEditRuangModal(id, nama, poliId) {
+        const form = document.getElementById('edit-ruang-form');
+        if (!form) return;
+
+        form.action = `/penjadwalan/ruang/${id}`;
+        document.getElementById('edit-ruang-nama').value = nama;
+        document.getElementById('edit-ruang-poli').value = poliId;
+
+        this.openModal('hs-edit-ruang-modal');
+    },
+
+    // --- Obat Helpers ---
+    openEditObatModal(id, nama, kemasan, harga) {
+        const form = document.getElementById('edit-obat-form');
+        if (!form) return;
+
+        form.action = `/obat/list/${id}`;
+        document.getElementById('edit-obat-nama').value = nama;
+        document.getElementById('edit-obat-kemasan').value = kemasan;
+        document.getElementById('edit-obat-harga').value = harga;
+
+        this.openModal('hs-edit-obat-modal');
+    },
+
+    openUpdateStokModal(id, nama, stok) {
+        const form = document.getElementById('update-stok-form');
+        if (!form) return;
+
+        form.action = `/obat/list/${id}`;
+        document.getElementById('stok-obat-nama-display').textContent = nama;
+        document.getElementById('edit-obat-stok-value').value = stok;
+
+        this.openModal('hs-update-stok-modal');
+    },
+
+    openEditUserModal(id, username, email, role) {
+        const form = document.getElementById('edit-user-form');
+        if (!form) return;
+
+        form.action = `/admin/users/${id}`;
+        document.getElementById('edit-user-username').value = username;
+        document.getElementById('edit-user-email').value = email;
+        document.getElementById('edit-user-role').value = role;
+
+        this.openModal('hs-edit-user-modal');
     }
 };
 

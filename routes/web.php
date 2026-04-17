@@ -38,18 +38,33 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('pasien', App\Http\Controllers\PasienController::class)->names([
             'index' => 'admin.pasien'
         ]);
+        Route::resource('users', App\Http\Controllers\UserController::class)->names([
+            'index' => 'admin.users'
+        ]);
     });
 
     // Doctor & Penjadwalan Routes
     Route::middleware(['role:admin,dokter'])->prefix('penjadwalan')->group(function () {
-        Route::get('/shift', function () { return view('penjadwalan.shift'); })->name('penjadwalan.shift');
-        Route::get('/jadwal', function () { return view('penjadwalan.jadwal'); })->name('penjadwalan.jadwal');
+        Route::resource('shift', App\Http\Controllers\ShiftController::class)->names([
+            'index' => 'penjadwalan.shift'
+        ]);
+        Route::resource('ruang', App\Http\Controllers\RuangController::class)->names([
+            'index' => 'penjadwalan.ruang'
+        ]);
+        Route::resource('jadwal', App\Http\Controllers\JadwalJagaController::class)->names([
+            'index' => 'penjadwalan.jadwal'
+        ]);
     });
 
     // Obat Routes
     Route::middleware(['role:admin,apoteker'])->prefix('obat')->group(function () {
-        Route::get('/list', function () { return view('obat.list'); })->name('obat.list');
-        Route::get('/stok', function () { return view('obat.stok'); })->name('obat.stok');
+        Route::get('/stok', [App\Http\Controllers\ObatController::class, 'stok'])->name('obat.stok');
+        Route::resource('list', App\Http\Controllers\ObatController::class)->names([
+            'index' => 'obat.list',
+            'store' => 'obat.list.store',
+            'update' => 'obat.list.update',
+            'destroy' => 'obat.list.destroy',
+        ])->parameters(['list' => 'obat']);
     });
 
     // Keuangan Routes

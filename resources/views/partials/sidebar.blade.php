@@ -25,6 +25,7 @@
       'roles' => ['admin', 'dokter'],
       'children' => [
         ['label' => 'Manajemen Shift', 'route' => 'penjadwalan.shift', 'roles' => ['admin']],
+        ['label' => 'Manajemen Ruang', 'route' => 'penjadwalan.ruang', 'roles' => ['admin']],
         ['label' => 'Manajemen Jadwal', 'route' => 'penjadwalan.jadwal', 'roles' => ['admin', 'dokter', 'pasien']],
       ]
     ],
@@ -58,7 +59,7 @@
     [
       'label' => 'Akun',
       'icon' => '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-      'route' => '#',
+      'route' => 'admin.users',
       'roles' => ['admin', 'dokter', 'pasien', 'apoteker', 'kasir'],
     ],
   ];
