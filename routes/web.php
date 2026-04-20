@@ -19,7 +19,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected Dashboard Routes
 Route::middleware(['auth'])->group(function () {
-    
+
     // Admin Routes
     Route::middleware(['role:admin'])->prefix('admin')->group(function () {
         Route::get('/dashboard', function () {
@@ -52,7 +52,10 @@ Route::middleware(['auth'])->group(function () {
             'index' => 'penjadwalan.ruang'
         ]);
         Route::resource('jadwal', App\Http\Controllers\JadwalJagaController::class)->names([
-            'index' => 'penjadwalan.jadwal'
+            'index' => 'penjadwalan.jadwal',
+            'store' => 'penjadwalan.jadwal.store',
+            'update' => 'penjadwalan.jadwal.update',
+            'destroy' => 'penjadwalan.jadwal.destroy',
         ]);
     });
 
@@ -69,19 +72,38 @@ Route::middleware(['auth'])->group(function () {
 
     // Keuangan Routes
     Route::middleware(['role:admin,kasir'])->prefix('keuangan')->group(function () {
-        Route::get('/transaksi', function () { return view('keuangan.transaksi'); })->name('keuangan.transaksi');
-        Route::get('/laporan', function () { return view('keuangan.laporan'); })->name('keuangan.laporan');
+        Route::get('/transaksi', function () {
+            return view('keuangan.transaksi');
+        })->name('keuangan.transaksi');
+        Route::get('/laporan', function () {
+            return view('keuangan.laporan');
+        })->name('keuangan.laporan');
     });
 
     // Riwayat Routes
     Route::middleware(['role:dokter,pasien'])->prefix('riwayat')->group(function () {
-        Route::get('/periksa', function () { return view('riwayat.periksa'); })->name('riwayat.periksa');
-        Route::get('/pembayaran', function () { return view('riwayat.pembayaran'); })->name('riwayat.pembayaran');
+        Route::get('/periksa', function () {
+            return view('riwayat.periksa');
+        })->name('riwayat.periksa');
+        Route::get('/pembayaran', function () {
+            return view('riwayat.pembayaran');
+        })->name('riwayat.pembayaran');
     });
 
     // Role Specific Home Redirects (for the sidebar link logic)
-    Route::get('/doctor', function () { return view('doctor.dashboard'); })->name('doctor.dashboard')->middleware('role:dokter');
-    Route::get('/patient', function () { return view('patient.dashboard'); })->name('patient.dashboard')->middleware('role:pasien');
-    Route::get('/pharmacist', function () { return view('pharmacist.dashboard'); })->name('pharmacist.dashboard')->middleware('role:apoteker');
-    Route::get('/cashier', function () { return view('cashier.dashboard'); })->name('cashier.dashboard')->middleware('role:kasir');
+    Route::get('/doctor', function () {
+        return view('doctor.dashboard');
+    })->name('doctor.dashboard')->middleware('role:dokter');
+    Route::get('/doctor/antrian', function () {
+        return view('doctor.antrian');
+    })->name('dokter.antrian')->middleware('role:dokter');
+    Route::get('/patient', function () {
+        return view('patient.dashboard');
+    })->name('patient.dashboard')->middleware('role:pasien');
+    Route::get('/pharmacist', function () {
+        return view('pharmacist.dashboard');
+    })->name('pharmacist.dashboard')->middleware('role:apoteker');
+    Route::get('/cashier', function () {
+        return view('cashier.dashboard');
+    })->name('cashier.dashboard')->middleware('role:kasir');
 });

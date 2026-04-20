@@ -9,6 +9,14 @@
       'roles' => ['admin', 'dokter', 'pasien', 'apoteker', 'kasir'],
     ],
     [
+      'label' => 'Layanan Dokter',
+      'icon' => '<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1a.3.3 0 1 0 .2-.3L4 10.5V4l.8-1.7ZM19.2 2.3A.3.3 0 1 1 19 2h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1a.3.3 0 1 1-.2-.3l1.2-.2V4l-.8-1.7ZM12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM18 19v-1a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v1"/>',
+      'roles' => ['dokter'],
+      'children' => [
+        ['label' => 'Antrian Pasien', 'route' => 'dokter.antrian'],
+      ]
+    ],
+    [
       'label' => 'Master Data',
       'icon' => '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>',
       'roles' => ['admin'],

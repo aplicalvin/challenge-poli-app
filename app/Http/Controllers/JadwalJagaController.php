@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class JadwalJagaController extends Controller
 {
+    private function authorizeAdmin()
+    {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Hanya Admin yang diperbolehkan mengolah data jadwal.');
+        }
+    }
+
     public function index()
     {
         $jadwals = JadwalJaga::with(['shift', 'dokter', 'ruang.poli'])->latest()->paginate(10);
@@ -21,6 +28,7 @@ class JadwalJagaController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorizeAdmin();
         $request->validate([
             'id_shift' => 'required|exists:shift,id',
             'id_dokter' => 'required|exists:dokter,id',
@@ -41,6 +49,7 @@ class JadwalJagaController extends Controller
 
     public function update(Request $request, JadwalJaga $jadwal)
     {
+        $this->authorizeAdmin();
         $request->validate([
             'id_shift' => 'required|exists:shift,id',
             'id_dokter' => 'required|exists:dokter,id',
@@ -61,6 +70,7 @@ class JadwalJagaController extends Controller
 
     public function destroy(JadwalJaga $jadwal)
     {
+        $this->authorizeAdmin();
         $jadwal->delete();
 
         $jadwals = JadwalJaga::with(['shift', 'dokter', 'ruang.poli'])->latest()->paginate(10);

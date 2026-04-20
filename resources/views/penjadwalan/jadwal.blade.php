@@ -18,6 +18,7 @@
             </p>
           </div>
 
+          @if(auth()->user()->role === 'admin')
           <div>
             <div class="inline-flex gap-x-2">
               <button type="button" 
@@ -28,6 +29,7 @@
               </button>
             </div>
           </div>
+          @endif
         </div>
         <!-- End Header -->
 
@@ -53,7 +55,7 @@
 
 <!-- Create Modal -->
 <x-popupmodal id="hs-create-jadwal-modal" title="Tambah Jadwal Jaga">
-  <form id="create-jadwal-form" action="{{ route('jadwal.store') }}" method="POST">
+  <form id="create-jadwal-form" action="{{ route('penjadwalan.jadwal.store') }}" method="POST">
     @csrf
     <div class="space-y-4">
       <div>
