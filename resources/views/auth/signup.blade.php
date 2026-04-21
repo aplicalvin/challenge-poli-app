@@ -24,8 +24,8 @@
             <!-- Form Group -->
             <div>
               <label for="username" class="block text-sm mb-2 dark:text-white">Username</label>
-              <input type="text" id="username" name="username" value="{{ old('username') }}"
-                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+              <input type="text" id="username" name="username" value="{{ old('username') }}" 
+                class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" 
                 required>
               @error('username')
                 <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
@@ -34,8 +34,8 @@
 
             <div>
               <label for="email" class="block text-sm mb-2 dark:text-white">Email address</label>
-              <input type="email" id="email" name="email" value="{{ old('email') }}"
-                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+              <input type="email" id="email" name="email" value="{{ old('email') }}" 
+                class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" 
                 required>
               @error('email')
                 <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
@@ -50,8 +50,8 @@
 
             <div>
               <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
-              <input type="password" id="password" name="password"
-                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+              <input type="password" id="password" name="password" 
+                class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" 
                 required>
               @error('password')
                 <p class="text-xs text-red-600 mt-2">{{ $message }}</p>
@@ -60,8 +60,8 @@
 
             <div>
               <label for="password_confirmation" class="block text-sm mb-2 dark:text-white">Confirm Password</label>
-              <input type="password" id="password_confirmation" name="password_confirmation"
-                class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
+              <input type="password" id="password_confirmation" name="password_confirmation" 
+                class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" 
                 required>
             </div>
 

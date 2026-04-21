@@ -58,16 +58,16 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-        <input type="text" name="nama" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Nama Lengkap" required>
+        <input type="text" name="nama" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Nama Lengkap" required>
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div>
             <label class="block text-sm font-medium mb-2 dark:text-white">Username</label>
-            <input type="text" name="username" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+            <input type="text" name="username" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
         </div>
         <div>
             <label class="block text-sm font-medium mb-2 dark:text-white">Role</label>
-            <select name="role" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+            <select name="role" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                 <option value="kasir">Kasir</option>
                 <option value="apoteker">Apoteker</option>
             </select>
@@ -75,15 +75,15 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Password</label>
-        <input type="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="password" name="password" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">No HP</label>
-        <input type="text" name="no_hp" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="08...">
+        <input type="text" name="no_hp" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="08...">
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Alamat</label>
-        <textarea name="alamat" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2" placeholder="Alamat lengkap..."></textarea>
+        <textarea name="alamat" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2" placeholder="Alamat lengkap..."></textarea>
       </div>
     </div>
   </form>

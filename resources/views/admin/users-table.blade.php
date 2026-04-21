@@ -3,6 +3,7 @@
     <thead class="bg-gray-50 dark:bg-neutral-800">
       <tr>
         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
+        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Nama</th>
         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Username</th>
         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
@@ -13,6 +14,7 @@
       @forelse($users as $index => $u)
         <tr>
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $users->firstItem() + $index }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $u->nama }}</td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 font-bold">{{ $u->username }}</td>
           <td class="px-6 py-4 whitespace-nowrap text-sm">
             @php
@@ -33,7 +35,7 @@
           <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
             <button type="button" 
                     class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400"
-                    onclick="CrudHandler.openEditUserModal('{{ $u->id }}', '{{ $u->username }}', '{{ $u->email }}', '{{ $u->role }}')">
+                    onclick="CrudHandler.openEditUserModal('{{ $u->id }}', '{{ $u->username }}', '{{ $u->email }}', '{{ $u->role }}', '{{ addslashes($u->nama) }}')">
               Edit
             </button>
             <button type="button" 

@@ -36,14 +36,14 @@
           <div class="flex flex-col sm:flex-row gap-3">
             <div class="grow relative">
               <input type="text" id="user-search" placeholder="Cari username atau email..." 
-                     class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                     class="py-2 px-3 ps-11 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
               <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                 <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               </div>
             </div>
             <div class="sm:w-48">
               <select id="user-role-filter" 
-                      class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                      class="py-2 px-3 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                 <option value="">Semua Role</option>
                 <option value="admin">Admin</option>
                 <option value="dokter">Dokter</option>
@@ -86,16 +86,20 @@
     @csrf
     <div class="space-y-4">
       <div>
+        <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+        <input type="text" name="nama" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Contoh: Budi Santoso" required>
+      </div>
+      <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Username</label>
-        <input type="text" name="username" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Contoh: budi_farmasi" required>
+        <input type="text" name="username" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Contoh: budi_farmasi" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Password</label>
-        <input type="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Minimal 8 karakter" required>
+        <input type="password" name="password" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Minimal 8 karakter" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Peranan (Role)</label>
-        <select name="role" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select name="role" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           <option value="admin">Admin System</option>
           <option value="dokter">Dokter</option>
           <option value="pasien">Pasien</option>
@@ -121,16 +125,20 @@
     @method('PUT')
     <div class="space-y-4">
       <div>
+        <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+        <input type="text" id="edit-user-nama" name="nama" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+      </div>
+      <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Username</label>
-        <input type="text" id="edit-user-username" name="username" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="text" id="edit-user-username" name="username" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Email</label>
-        <input type="email" id="edit-user-email" name="email" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="email" id="edit-user-email" name="email" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Peranan (Role)</label>
-        <select id="edit-user-role" name="role" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select id="edit-user-role" name="role" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           <option value="admin">Admin System</option>
           <option value="dokter">Dokter</option>
           <option value="pasien">Pasien</option>
@@ -140,7 +148,7 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Password Baru (Opsional)</label>
-        <input type="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Kosongkan jika tidak ingin mengubah">
+        <input type="password" name="password" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Kosongkan jika tidak ingin mengubah">
       </div>
     </div>
   </form>

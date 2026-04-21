@@ -58,11 +58,11 @@
     <div class="space-y-4">
       <div>
         <label for="nama_poli" class="block text-sm font-medium mb-2 dark:text-white">Nama Poli</label>
-        <input type="text" id="nama_poli" name="nama_poli" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Contoh: Poli Umum" required>
+        <input type="text" id="nama_poli" name="nama_poli" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Contoh: Poli Umum" required>
       </div>
       <div>
         <label for="keterangan" class="block text-sm font-medium mb-2 dark:text-white">Keterangan</label>
-        <textarea id="keterangan" name="keterangan" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Deskripsi singkat poli..."></textarea>
+        <textarea id="keterangan" name="keterangan" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Deskripsi singkat poli..."></textarea>
       </div>
     </div>
   </form>

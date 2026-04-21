@@ -58,17 +58,17 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Nama Obat</label>
-        <input type="text" name="nama_obat" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Paracetamol" required>
+        <input type="text" name="nama_obat" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Paracetamol" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Kemasan</label>
-        <input type="text" name="kemasan" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Tablet 500mg / Botol 60ml" required>
+        <input type="text" name="kemasan" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Tablet 500mg / Botol 60ml" required>
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-medium mb-2 dark:text-white">Harga</label>
           <div class="relative">
-            <input type="number" name="harga" class="py-3 px-4 ps-12 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="0" required>
+            <input type="number" name="harga" class="py-2 px-4 ps-12 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="0" required>
             <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
               <span class="text-gray-400">Rp</span>
             </div>
@@ -76,7 +76,7 @@
         </div>
         <div>
           <label class="block text-sm font-medium mb-2 dark:text-white">Stok Awal</label>
-          <input type="number" name="stok" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" value="0">
+          <input type="number" name="stok" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" value="0">
         </div>
       </div>
     </div>
@@ -98,16 +98,16 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Nama Obat</label>
-        <input type="text" id="edit-obat-nama" name="nama_obat" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="text" id="edit-obat-nama" name="nama_obat" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Kemasan</label>
-        <input type="text" id="edit-obat-kemasan" name="kemasan" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="text" id="edit-obat-kemasan" name="kemasan" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Harga</label>
         <div class="relative">
-          <input type="number" id="edit-obat-harga" name="harga" class="py-3 px-4 ps-12 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+          <input type="number" id="edit-obat-harga" name="harga" class="py-2 px-4 ps-12 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
           <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
             <span class="text-gray-400">Rp</span>
           </div>

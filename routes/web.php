@@ -22,9 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Admin Routes
     Route::middleware(['role:admin'])->prefix('admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('admin.dashboard');
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
 
         Route::resource('poli', App\Http\Controllers\PoliController::class)->names([
             'index' => 'admin.poli'
@@ -106,4 +104,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cashier', function () {
         return view('cashier.dashboard');
     })->name('cashier.dashboard')->middleware('role:kasir');
+
+    // Profile Management
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });

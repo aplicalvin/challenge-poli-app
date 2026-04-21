@@ -45,16 +45,16 @@
                 <div class="space-y-4 text-start">
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                    <input type="text" name="nama" value="{{ $d->nama }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+                    <input type="text" name="nama" value="{{ $d->nama }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
                   </div>
                   <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">Username</label>
-                        <input type="text" name="username" value="{{ $u->username ?? '' }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+                        <input type="text" name="username" value="{{ $u->username ?? '' }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">Poliklinik</label>
-                        <select name="id_poli" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <select name="id_poli" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                             @foreach($polis as $p)
                                 <option value="{{ $p->id }}" {{ $d->id_poli == $p->id ? 'selected' : '' }}>{{ $p->nama_poli }}</option>
                             @endforeach
@@ -63,21 +63,21 @@
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Password (Biarkan kosong jika tetap)</label>
-                    <input type="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                    <input type="password" name="password" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                   </div>
                   <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">No HP</label>
-                        <input type="text" name="no_hp" value="{{ $d->no_hp }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <input type="text" name="no_hp" value="{{ $d->no_hp }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">No KTP</label>
-                        <input type="text" name="no_ktp" value="{{ $d->no_ktp }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <input type="text" name="no_ktp" value="{{ $d->no_ktp }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                     </div>
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Alamat</label>
-                    <textarea name="alamat" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2">{{ $d->alamat }}</textarea>
+                    <textarea name="alamat" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2">{{ $d->alamat }}</textarea>
                   </div>
                 </div>
               </form>

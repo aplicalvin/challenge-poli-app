@@ -45,4 +45,27 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function dokter()
+    {
+        return $this->hasOne(Dokter::class, 'id_user');
+    }
+
+    public function pasien()
+    {
+        return $this->hasOne(Pasien::class, 'id_user');
+    }
+
+    public function staff()
+    {
+        return $this->hasOne(Staff::class, 'id_user');
+    }
+
+    public function getNamaAttribute()
+    {
+        if ($this->role === 'dokter') return $this->dokter->nama ?? $this->username;
+        if ($this->role === 'pasien') return $this->pasien->nama ?? $this->username;
+        if (in_array($this->role, ['kasir', 'apoteker'])) return $this->staff->nama ?? $this->username;
+        return $this->username;
+    }
 }

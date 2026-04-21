@@ -49,13 +49,13 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-1 dark:text-white">Nama Obat</label>
-        <div id="stok-obat-nama-display" class="py-2 px-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-800 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <div id="stok-obat-nama-display" class="py-2 px-3 bg-gray-50 border border-gray-300 rounded-lg text-sm text-gray-800 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           -
         </div>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Jumlah Stok Saat Ini</label>
-        <input type="number" id="edit-obat-stok-value" name="stok" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="number" id="edit-obat-stok-value" name="stok" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
         <p class="mt-2 text-xs text-gray-500">
           Berapa jumlah total stok fisik yang tersedia sekarang?
         </p>

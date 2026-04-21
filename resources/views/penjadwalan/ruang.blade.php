@@ -58,11 +58,11 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Nama Ruang</label>
-        <input type="text" name="nama" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Contoh: Poli Umum 01 / Laboratorium" required>
+        <input type="text" name="nama" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Contoh: Poli Umum 01 / Laboratorium" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Poliklinik</label>
-        <select name="id_poli" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select name="id_poli" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($polis as $p)
             <option value="{{ $p->id }}">{{ $p->nama_poli }}</option>
           @endforeach
@@ -87,11 +87,11 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Nama Ruang</label>
-        <input type="text" id="edit-ruang-nama" name="nama" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+        <input type="text" id="edit-ruang-nama" name="nama" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Poliklinik</label>
-        <select id="edit-ruang-poli" name="id_poli" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select id="edit-ruang-poli" name="id_poli" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($polis as $p)
             <option value="{{ $p->id }}">{{ $p->nama_poli }}</option>
           @endforeach

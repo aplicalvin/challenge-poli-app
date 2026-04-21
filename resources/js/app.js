@@ -269,16 +269,22 @@ window.CrudHandler = {
         this.openModal('hs-update-stok-modal');
     },
 
-    openEditUserModal(id, username, email, role) {
+    openEditUserModal(id, username, email, role, nama) {
+        if (!window.HSOverlay) return;
+        
         const form = document.getElementById('edit-user-form');
-        if (!form) return;
-
-        form.action = `/admin/users/${id}`;
-        document.getElementById('edit-user-username').value = username;
-        document.getElementById('edit-user-email').value = email;
-        document.getElementById('edit-user-role').value = role;
-
-        this.openModal('hs-edit-user-modal');
+        if (form) {
+            form.action = `/admin/users/${id}`;
+            document.getElementById('edit-user-username').value = username;
+            document.getElementById('edit-user-email').value = email;
+            document.getElementById('edit-user-role').value = role;
+            
+            const namaInput = document.getElementById('edit-user-nama');
+            if (namaInput) namaInput.value = nama || '';
+            
+            const modal = document.getElementById('hs-edit-user-modal');
+            window.HSOverlay.open(modal);
+        }
     },
 
     async refreshTable(url, containerId, params = {}) {

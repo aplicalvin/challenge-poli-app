@@ -60,7 +60,7 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Shift Kerja</label>
-        <select name="id_shift" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select name="id_shift" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($shifts as $s)
             <option value="{{ $s->id }}">{{ $s->nama }} ({{ $s->hari }}: {{ $s->jam_masuk }} - {{ $s->jam_keluar }})</option>
           @endforeach
@@ -68,7 +68,7 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Dokter</label>
-        <select name="id_dokter" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select name="id_dokter" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($dokters as $d)
             <option value="{{ $d->id }}">{{ $d->nama }} ({{ $d->poli->nama_poli ?? '-' }})</option>
           @endforeach
@@ -76,7 +76,7 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Ruang</label>
-        <select name="id_ruang" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select name="id_ruang" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($ruangs as $r)
             <option value="{{ $r->id }}">{{ $r->nama }} ({{ $r->poli->nama_poli ?? '-' }})</option>
           @endforeach
@@ -101,7 +101,7 @@
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Shift Kerja</label>
-        <select id="edit-jadwal-shift" name="id_shift" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select id="edit-jadwal-shift" name="id_shift" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($shifts as $s)
             <option value="{{ $s->id }}">{{ $s->nama }} ({{ $s->hari }}: {{ $s->jam_masuk }} - {{ $s->jam_keluar }})</option>
           @endforeach
@@ -109,7 +109,7 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Dokter</label>
-        <select id="edit-jadwal-dokter" name="id_dokter" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select id="edit-jadwal-dokter" name="id_dokter" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($dokters as $d)
             <option value="{{ $d->id }}">{{ $d->nama }} ({{ $d->poli->nama_poli ?? '-' }})</option>
           @endforeach
@@ -117,7 +117,7 @@
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 dark:text-white">Ruang</label>
-        <select id="edit-jadwal-ruang" name="id_ruang" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+        <select id="edit-jadwal-ruang" name="id_ruang" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           @foreach($ruangs as $r)
             <option value="{{ $r->id }}">{{ $r->nama }} ({{ $r->poli->nama_poli ?? '-' }})</option>
           @endforeach

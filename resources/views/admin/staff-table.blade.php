@@ -45,16 +45,16 @@
                 <div class="space-y-4 text-start">
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                    <input type="text" name="nama" value="{{ $s->nama }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+                    <input type="text" name="nama" value="{{ $s->nama }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
                   </div>
                   <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">Username</label>
-                        <input type="text" name="username" value="{{ $u->username ?? '' }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
+                        <input type="text" name="username" value="{{ $u->username ?? '' }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" required>
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2 dark:text-white">Role</label>
-                        <select name="role" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                        <select name="role" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                             <option value="kasir" {{ ($u->role ?? '') === 'kasir' ? 'selected' : '' }}>Kasir</option>
                             <option value="apoteker" {{ ($u->role ?? '') === 'apoteker' ? 'selected' : '' }}>Apoteker</option>
                         </select>
@@ -62,15 +62,15 @@
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Password (Biar kosong jika tidak ganti)</label>
-                    <input type="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                    <input type="password" name="password" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">No HP</label>
-                    <input type="text" name="no_hp" value="{{ $s->no_hp }}" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                    <input type="text" name="no_hp" value="{{ $s->no_hp }}" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                   </div>
                   <div>
                     <label class="block text-sm font-medium mb-2 dark:text-white">Alamat</label>
-                    <textarea name="alamat" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2">{{ $s->alamat }}</textarea>
+                    <textarea name="alamat" class="py-2 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" rows="2">{{ $s->alamat }}</textarea>
                   </div>
                 </div>
               </form>

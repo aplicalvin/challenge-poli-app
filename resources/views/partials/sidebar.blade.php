@@ -68,6 +68,12 @@
       'label' => 'Akun',
       'icon' => '<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
       'route' => 'admin.users',
+      'roles' => ['admin'],
+    ],
+    [
+      'label' => 'Profil',
+      'icon' => '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>',
+      'route' => 'profile.index',
       'roles' => ['admin', 'dokter', 'pasien', 'apoteker', 'kasir'],
     ],
   ];
@@ -77,7 +83,10 @@
 <div id="application-sidebar"
   class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700">
   <div class="px-6">
-    <a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label="Brand">Poliklinik</a>
+    <a class="flex items-center text-xl font-semibold dark:text-white" href="/" aria-label="Brand">
+      <img src="{{ asset('logo-bengkot.png') }}" alt="Logo" class="w-10 h-10 mr-2">
+      Poliklinik
+    </a>
   </div>
 
   <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
