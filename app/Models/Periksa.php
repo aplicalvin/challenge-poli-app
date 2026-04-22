@@ -19,6 +19,8 @@ class Periksa extends Model
         'status_periksa',
     ];
 
+    protected $appends = ['total_biaya'];
+
     public function pasien()
     {
         return $this->belongsTo(Pasien::class, 'id_pasien');
@@ -36,10 +38,9 @@ class Periksa extends Model
 
     public function getTotalBiayaAttribute()
     {
-        $obatTotal = $this->detailPeriksaObat->sum(function ($item) {
+        return $this->detailPeriksaObat->sum(function ($item) {
             return $item->jumlah * $item->harga_saat_ini;
         });
-        return ($this->biaya_periksa ?? 0) + $obatTotal;
     }
 
     public function pembayaran()

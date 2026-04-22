@@ -303,10 +303,6 @@
 
             <div class="pt-4 border-t dark:border-neutral-700">
               <div class="flex justify-between items-center px-2">
-                <span class="text-sm font-medium text-gray-500">Biaya Jasa Medis</span>
-                <span class="text-sm font-semibold text-gray-800 dark:text-neutral-200">Rp ${new Intl.NumberFormat('id-ID').format(d.biaya_periksa)}</span>
-              </div>
-              <div class="flex justify-between items-center px-2 mt-2">
                 <span class="text-base font-bold text-gray-800 dark:text-white">Total Pembayaran</span>
                 <span class="text-lg font-black text-blue-600 dark:text-blue-400">Rp ${new Intl.NumberFormat('id-ID').format(d.total_biaya)}</span>
               </div>

@@ -160,6 +160,8 @@
       const data = await response.json();
       if (data.success) {
         Swal.fire('Berhasil!', data.message, 'success').then(() => location.reload());
+      } else {
+        Swal.fire('Gagal!', data.message || 'Terjadi kesalahan.', 'error');
       }
     } catch (e) {
       Swal.fire('Error!', 'Gagal memproses transaksi.', 'error');

@@ -21,6 +21,7 @@ class RiwayatPeriksaDokterController extends Controller
         $query = Periksa::whereHas('jadwalJaga', function ($q) use ($dokter) {
             $q->where('id_dokter', $dokter->id);
         })
+            ->where('status_periksa', '!=', 'batal')
             ->with(['pasien', 'jadwalJaga.shift', 'detailPeriksaObat.obat'])
             ->orderBy('tgl_periksa', 'desc');
 
