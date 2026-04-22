@@ -39,6 +39,9 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', App\Http\Controllers\UserController::class)->names([
             'index' => 'admin.users'
         ]);
+        
+        Route::get('/antrian-realtime', [App\Http\Controllers\AdminAntrianController::class, 'index'])->name('admin.antrian.realtime');
+        Route::get('/antrian-realtime/data', [App\Http\Controllers\AdminAntrianController::class, 'getQueueData'])->name('admin.antrian.data');
     });
 
     // Doctor & Penjadwalan Routes
@@ -76,7 +79,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/transaksi/{id}/confirm', [App\Http\Controllers\TransaksiKeuanganController::class, 'confirm'])->name('keuangan.transaksi.confirm');
         Route::post('/transaksi/{id}/reject', [App\Http\Controllers\TransaksiKeuanganController::class, 'reject'])->name('keuangan.transaksi.reject');
         Route::get('/laporan', [App\Http\Controllers\LaporanKeuanganController::class, 'index'])->name('keuangan.laporan');
-        Route::get('/laporan/export', [App\Http\Controllers\LaporanKeuanganController::class, 'exportCsv'])->name('keuangan.laporan.export');
     });
 
     // Riwayat Routes

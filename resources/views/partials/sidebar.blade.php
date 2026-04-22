@@ -31,6 +31,7 @@
         ['label' => 'Manajemen Dokter', 'route' => 'admin.dokter'],
         ['label' => 'Manajemen Staff', 'route' => 'admin.staff'],
         ['label' => 'Manajemen Pasien', 'route' => 'admin.pasien'],
+        ['label' => 'Monitor Antrian', 'route' => 'admin.antrian.realtime'],
       ]
     ],
     [

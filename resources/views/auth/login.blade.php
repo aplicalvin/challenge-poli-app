@@ -37,9 +37,8 @@
 
           <!-- Form Group -->
           <div>
-            <div class="flex justify-between items-center">
               <label for="password" class="block text-sm mb-2 dark:text-white">Password</label>
-              <a class="text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="#">Forgot password?</a>
+              <span class="text-xs text-gray-500 dark:text-neutral-400">If forgot password, contact admin</span>
             </div>
             <div class="relative">
               <input type="password" id="password" name="password" 

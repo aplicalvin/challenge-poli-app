@@ -18,17 +18,17 @@
       <div>
         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Dari Tanggal</label>
         <input type="date" id="start_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Sampai Tanggal</label>
         <input type="date" id="end_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Status</label>
         <select id="filter_status" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
           <option value="">Semua Status</option>
           <option value="pending">Pending</option>
           <option value="lunas">Lunas</option>

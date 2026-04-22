@@ -13,10 +13,10 @@
       </p>
     </div>
     <div class="flex gap-2">
-      <button type="button" onclick="exportData()"
+      <button type="button" onclick="exportToExcel('table-laporan', 'Laporan_Keuangan')"
         class="py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition-all">
         <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Ekspor CSV
+        Ekspor Excel
       </button>
     </div>
   </div>
@@ -43,12 +43,12 @@
       <div>
         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Dari Tanggal</label>
         <input type="date" id="start_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
       <div>
         <label class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Sampai Tanggal</label>
         <input type="date" id="end_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
       <button type="button" onclick="resetFilters()"
         class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-neutral-900 dark:border-neutral-700 dark:text-white">
@@ -60,7 +60,7 @@
   <!-- Table -->
   <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
     <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+      <table id="table-laporan" class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
         <thead class="bg-gray-50 dark:bg-neutral-700">
           <tr>
             <th class="px-6 py-4 text-start text-xs font-bold text-gray-500 uppercase tracking-wider">Tanggal Bayar</th>
@@ -106,10 +106,5 @@
     refreshTable();
   }
 
-  function exportData() {
-    const start = document.getElementById('start_date').value;
-    const end = document.getElementById('end_date').value;
-    window.location.href = `{{ route('keuangan.laporan.export') }}?start_date=${start}&end_date=${end}`;
-  }
 </script>
 @endpush

@@ -7,6 +7,7 @@
     <title>@yield('title', 'Poli App')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 
 <body class="bg-gray-50 dark:bg-neutral-900">
@@ -52,7 +53,7 @@
                             <circle cx="12" cy="12" r="10" />
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
-                        <span id="header-clock" class="font-medium">WIB: --:--:--</span>
+                        <span id="header-clock" class="font-medium">--</span>
                     </div>
 
                     <!-- Profile Dropdown -->
@@ -144,14 +145,18 @@
         function updateClocks() {
             const options = {
                 timeZone: 'Asia/Jakarta',
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: false
             };
-            const formatter = new Intl.DateTimeFormat('en-GB', options);
+            const formatter = new Intl.DateTimeFormat('id-ID', options);
             const now = new Date();
-            const timeString = 'WIB: ' + formatter.format(now);
+            const timeString = formatter.format(now).replace('pukul ', '') + ' WIB';
 
             const headerClock = document.getElementById('header-clock');
             if (headerClock) headerClock.textContent = timeString;
@@ -159,6 +164,20 @@
             const sidebarClock = document.getElementById('sidebar-clock-nav');
             if (sidebarClock) sidebarClock.textContent = timeString;
         }
+
+        function exportToExcel(tableId, filename) {
+            const table = document.getElementById(tableId);
+            if (!table) return;
+
+            // Clone table to remove action columns
+            const clone = table.cloneNode(true);
+            const actionCells = clone.querySelectorAll('th:last-child, td:last-child');
+            actionCells.forEach(cell => cell.remove());
+
+            const wb = XLSX.utils.table_to_book(clone, { sheet: "Data" });
+            XLSX.writeFile(wb, `${filename}_${new Date().toISOString().split('T')[0]}.xlsx`);
+        }
+
         setInterval(updateClocks, 1000);
         updateClocks();
     </script>

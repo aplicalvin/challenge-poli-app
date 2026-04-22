@@ -1,5 +1,5 @@
 <div class="overflow-x-auto">
-  <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+  <table id="table-users" class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
     <thead class="bg-gray-50 dark:bg-neutral-800">
       <tr>
         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
