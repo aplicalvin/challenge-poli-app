@@ -92,9 +92,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/doctor', function () {
         return view('doctor.dashboard');
     })->name('doctor.dashboard')->middleware('role:dokter');
-    Route::get('/doctor/antrian', function () {
-        return view('doctor.antrian');
-    })->name('dokter.antrian')->middleware('role:dokter');
+    Route::get('/doctor/antrian', [App\Http\Controllers\LayananDokterController::class, 'index'])->name('dokter.antrian')->middleware('role:dokter');
+    Route::post('/doctor/antrian/{id}/start', [App\Http\Controllers\LayananDokterController::class, 'startExamine'])->name('doctor.queue.start')->middleware('role:dokter');
+    Route::get('/doctor/antrian/{id}/examine', [App\Http\Controllers\LayananDokterController::class, 'examine'])->name('doctor.queue.examine')->middleware('role:dokter');
+    Route::post('/doctor/antrian/{id}/finish', [App\Http\Controllers\LayananDokterController::class, 'finishExamine'])->name('doctor.queue.finish')->middleware('role:dokter');
+    Route::get('/doctor/riwayat', [App\Http\Controllers\RiwayatPeriksaDokterController::class, 'index'])->name('doctor.riwayat')->middleware('role:dokter');
+    Route::get('/doctor/riwayat/{id}', [App\Http\Controllers\RiwayatPeriksaDokterController::class, 'detail'])->name('doctor.riwayat.detail')->middleware('role:dokter');
+
+    Route::get('/patient/registration', [App\Http\Controllers\DaftarPeriksaController::class, 'index'])->name('patient.registration.index')->middleware('role:pasien');
+    Route::get('/patient/registration/schedules', [App\Http\Controllers\DaftarPeriksaController::class, 'getSchedules'])->name('patient.registration.schedules')->middleware('role:pasien');
+    Route::post('/patient/registration', [App\Http\Controllers\DaftarPeriksaController::class, 'store'])->name('patient.registration.store')->middleware('role:pasien');
+    Route::delete('/patient/registration/{id}', [App\Http\Controllers\DaftarPeriksaController::class, 'cancel'])->name('patient.registration.cancel')->middleware('role:pasien');
+    Route::get('/patient/check-status', [App\Http\Controllers\DaftarPeriksaController::class, 'checkStatus'])->name('patient.registration.check')->middleware('role:pasien');
     Route::get('/patient', function () {
         return view('patient.dashboard');
     })->name('patient.dashboard')->middleware('role:pasien');

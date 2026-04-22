@@ -27,4 +27,9 @@ class JadwalJaga extends Model
     {
         return $this->belongsTo(Ruang::class, 'id_ruang');
     }
+
+    public function periksa()
+    {
+        return $this->hasMany(Periksa::class, 'id_jadwal_jaga');
+    }
 }

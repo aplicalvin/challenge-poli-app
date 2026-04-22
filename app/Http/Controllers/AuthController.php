@@ -52,6 +52,13 @@ class AuthController extends Controller
             'role' => 'pasien', // Registrations are only for patients
         ]);
 
+        // Create Pasien profile immediately
+        \App\Models\Pasien::create([
+            'id_user' => $user->id,
+            'nama' => $user->username, // Default name to username
+            'no_rm' => date('Ymd') . '-' . str_pad($user->id, 4, '0', STR_PAD_LEFT), // Generate simple RM number
+        ]);
+
         Auth::login($user);
 
         return $this->redirectUser($user);

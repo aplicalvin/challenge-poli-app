@@ -17,6 +17,12 @@
       ]
     ],
     [
+      'label' => 'Daftar Periksa',
+      'icon' => '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M16 11h6"/>',
+      'route' => 'patient.registration.index',
+      'roles' => ['pasien'],
+    ],
+    [
       'label' => 'Master Data',
       'icon' => '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>',
       'roles' => ['admin'],
@@ -60,7 +66,7 @@
       'icon' => '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
       'roles' => ['dokter', 'pasien'],
       'children' => [
-        ['label' => 'Riwayat Periksa', 'route' => 'riwayat.periksa', 'roles' => ['dokter', 'pasien']],
+        ['label' => 'Riwayat Periksa', 'route' => $userRole === 'dokter' ? 'doctor.riwayat' : 'riwayat.periksa', 'roles' => ['dokter', 'pasien']],
         ['label' => 'Riwayat Pembayaran', 'route' => 'riwayat.pembayaran', 'roles' => ['pasien']],
       ]
     ],

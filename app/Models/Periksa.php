@@ -18,4 +18,14 @@ class Periksa extends Model
         'biaya_periksa',
         'status_periksa',
     ];
+
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'id_pasien');
+    }
+
+    public function jadwalJaga()
+    {
+        return $this->belongsTo(JadwalJaga::class, 'id_jadwal_jaga');
+    }
 }

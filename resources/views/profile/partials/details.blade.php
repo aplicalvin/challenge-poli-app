@@ -78,12 +78,12 @@
         @if($user->role === 'pasien')
         <div>
           <label class="block text-sm font-medium mb-2 dark:text-white">Bergabung Sejak</label>
-          <input type="text" value="{{ optional($profile->created_at)->format('d M Y H:i') }}" disabled
+          <input type="text" value="{{ $profile?->created_at?->format('d M Y H:i') ?? '-' }}" disabled
             class="py-2 px-4 block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-500">
         </div>
         <div>
           <label class="block text-sm font-medium mb-2 dark:text-white">Terakhir Diperbarui</label>
-          <input type="text" value="{{ optional($profile->updated_at)->format('d M Y H:i') }}" disabled
+          <input type="text" value="{{ $profile?->updated_at?->format('d M Y H:i') ?? '-' }}" disabled
             class="py-2 px-4 block w-full bg-gray-50 border border-gray-300 rounded-lg text-sm dark:bg-neutral-700 dark:border-neutral-700 dark:text-neutral-500">
         </div>
         @endif

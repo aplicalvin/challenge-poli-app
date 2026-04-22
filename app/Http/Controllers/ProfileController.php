@@ -88,6 +88,9 @@ class ProfileController extends Controller
                 ]
             );
         } elseif ($user->role === 'pasien') {
+            $pasien = Pasien::where('id_user', $user->id)->first();
+            $no_rm = $pasien ? $pasien->no_rm : date('Ymd') . '-' . str_pad($user->id, 4, '0', STR_PAD_LEFT);
+            
             Pasien::updateOrCreate(
                 ['id_user' => $user->id],
                 [
@@ -95,6 +98,8 @@ class ProfileController extends Controller
                     'alamat' => $request->alamat,
                     'no_hp' => $request->no_hp,
                     'no_ktp' => $request->no_ktp,
+                    'no_rm' => $no_rm,
+                    'added_by' => Auth::id(),
                 ]
             );
         } elseif (in_array($user->role, ['kasir', 'apoteker'])) {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Poli App')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gray-50 dark:bg-neutral-900">
@@ -40,7 +41,20 @@
                     <!-- Search Input -->
                 </div>
 
+
                 <div class="flex flex-row items-center justify-end gap-2">
+                    <!-- Clock -->
+                    <div
+                        class="flex items-center gap-x-3.5 py-2 px-2.5 text-gray-700 dark:text-neutral-400 text-sm rounded-lg border border-gray-100 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-800/50">
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        <span id="header-clock" class="font-medium">WIB: --:--:--</span>
+                    </div>
+
                     <!-- Profile Dropdown -->
                     <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
                         <button id="hs-dropdown-with-header" type="button"
@@ -125,6 +139,79 @@
 
     <x-toast />
     @stack('scripts')
+
+    <script>
+        function updateClocks() {
+            const options = {
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            const formatter = new Intl.DateTimeFormat('en-GB', options);
+            const now = new Date();
+            const timeString = 'WIB: ' + formatter.format(now);
+
+            const headerClock = document.getElementById('header-clock');
+            if (headerClock) headerClock.textContent = timeString;
+
+            const sidebarClock = document.getElementById('sidebar-clock-nav');
+            if (sidebarClock) sidebarClock.textContent = timeString;
+        }
+        setInterval(updateClocks, 1000);
+        updateClocks();
+    </script>
+
+    @if(auth()->check() && auth()->user()->role === 'pasien')
+    <script>
+        let notifiedSedangPeriksa = false;
+        async function checkGlobalQueueStatus() {
+            try {
+                const response = await fetch("{{ route('patient.registration.check') }}");
+                const data = await response.json();
+                
+                // Update dashboard specific elements if they exist
+                const dashboardSection = document.getElementById('active-queue-section');
+                if (dashboardSection) {
+                    const numberSpan = document.getElementById('queue-number');
+                    const statusText = document.getElementById('queue-status-text');
+                    
+                    if (data.status !== 'none') {
+                        dashboardSection.classList.remove('hidden');
+                        if (numberSpan) numberSpan.textContent = data.no_antrian;
+                        
+                        if (data.status === 'sedang_periksa') {
+                            if (statusText) statusText.textContent = 'GILIRAN ANDA! Silahkan menuju ruang periksa.';
+                            dashboardSection.classList.add('animate-pulse', 'bg-blue-100', 'border-blue-400');
+                        } else {
+                            if (statusText) statusText.textContent = 'Sedang dalam antrian. Mohon tunggu giliran Anda.';
+                            dashboardSection.classList.remove('animate-pulse', 'bg-blue-100', 'border-blue-400');
+                        }
+                    } else {
+                        dashboardSection.classList.add('hidden');
+                    }
+                }
+
+                // Global Notification
+                if (data.status === 'sedang_periksa' && !notifiedSedangPeriksa) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Gilirannya!',
+                        text: 'Waktunya anda periksa sekarang. Silahkan menuju ruang periksa.',
+                        confirmButtonText: 'Saya Mengerti',
+                        timer: 15000
+                    });
+                    notifiedSedangPeriksa = true;
+                } else if (data.status !== 'sedang_periksa') {
+                    notifiedSedangPeriksa = false;
+                }
+            } catch (e) { console.error('Queue poll error:', e); }
+        }
+        setInterval(checkGlobalQueueStatus, 10000);
+        checkGlobalQueueStatus();
+    </script>
+    @endif
 </body>
 
 </html>

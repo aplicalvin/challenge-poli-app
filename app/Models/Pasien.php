@@ -22,4 +22,9 @@ class Pasien extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function periksa()
+    {
+        return $this->hasMany(Periksa::class, 'id_pasien');
+    }
 }
