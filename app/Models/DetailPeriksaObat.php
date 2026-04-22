@@ -13,4 +13,8 @@ class DetailPeriksaObat extends Model
         'jumlah',
         'harga_saat_ini',
     ];
+    public function obat()
+    {
+        return $this->belongsTo(Obat::class, 'id_obat');
+    }
 }

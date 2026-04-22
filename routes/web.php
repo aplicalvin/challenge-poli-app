@@ -70,9 +70,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Keuangan Routes
     Route::middleware(['role:admin,kasir'])->prefix('keuangan')->group(function () {
-        Route::get('/transaksi', function () {
-            return view('keuangan.transaksi');
-        })->name('keuangan.transaksi');
+        Route::get('/transaksi', [App\Http\Controllers\TransaksiKeuanganController::class, 'index'])->name('keuangan.transaksi');
+        Route::post('/transaksi/{id}/confirm', [App\Http\Controllers\TransaksiKeuanganController::class, 'confirm'])->name('keuangan.transaksi.confirm');
         Route::get('/laporan', function () {
             return view('keuangan.laporan');
         })->name('keuangan.laporan');
@@ -80,9 +79,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Riwayat Routes
     Route::middleware(['role:dokter,pasien'])->prefix('riwayat')->group(function () {
-        Route::get('/periksa', function () {
-            return view('riwayat.periksa');
-        })->name('riwayat.periksa');
+        Route::get('/periksa', [App\Http\Controllers\RiwayatPeriksaPasienController::class, 'index'])->name('riwayat.periksa');
         Route::get('/pembayaran', function () {
             return view('riwayat.pembayaran');
         })->name('riwayat.pembayaran');
@@ -104,6 +101,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/patient/registration', [App\Http\Controllers\DaftarPeriksaController::class, 'store'])->name('patient.registration.store')->middleware('role:pasien');
     Route::delete('/patient/registration/{id}', [App\Http\Controllers\DaftarPeriksaController::class, 'cancel'])->name('patient.registration.cancel')->middleware('role:pasien');
     Route::get('/patient/check-status', [App\Http\Controllers\DaftarPeriksaController::class, 'checkStatus'])->name('patient.registration.check')->middleware('role:pasien');
+    Route::get('/patient/history', [App\Http\Controllers\RiwayatPeriksaPasienController::class, 'index'])->name('patient.history')->middleware('role:pasien');
+    Route::get('/patient/history/{id}', [App\Http\Controllers\RiwayatPeriksaPasienController::class, 'detail'])->name('patient.history.detail')->middleware('role:pasien');
+    Route::post('/patient/history/{id}/pay', [App\Http\Controllers\RiwayatPeriksaPasienController::class, 'pay'])->name('patient.history.pay')->middleware('role:pasien');
     Route::get('/patient', function () {
         return view('patient.dashboard');
     })->name('patient.dashboard')->middleware('role:pasien');

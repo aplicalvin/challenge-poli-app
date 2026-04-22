@@ -21,8 +21,8 @@ class RiwayatPeriksaDokterController extends Controller
         $query = Periksa::whereHas('jadwalJaga', function ($q) use ($dokter) {
             $q->where('id_dokter', $dokter->id);
         })
-        ->with(['pasien', 'jadwalJaga.shift', 'detailPeriksaObat.obat'])
-        ->orderBy('tgl_periksa', 'desc');
+            ->with(['pasien', 'jadwalJaga.shift', 'detailPeriksaObat.obat'])
+            ->orderBy('tgl_periksa', 'desc');
 
         // Filter by Shift
         if ($request->filled('id_shift')) {
@@ -45,8 +45,10 @@ class RiwayatPeriksaDokterController extends Controller
             ]);
         }
 
-        // Fetch shifts for filter dropdown
-        $shifts = Shift::distinct()->get(['id', 'nama', 'hari']);
+        // Fetch shifts for filter dropdown - only those assigned to this doctor
+        $shifts = Shift::whereHas('jadwalJaga', function ($q) use ($dokter) {
+            $q->where('id_dokter', $dokter->id);
+        })->get();
 
         return view('doctor.history.index', compact('riwayat', 'shifts'));
     }
@@ -54,7 +56,7 @@ class RiwayatPeriksaDokterController extends Controller
     public function detail($id)
     {
         $periksa = Periksa::with(['pasien', 'detailPeriksaObat.obat'])->findOrFail($id);
-        
+
         return response()->json([
             'success' => true,
             'data' => $periksa

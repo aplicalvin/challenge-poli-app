@@ -15,4 +15,8 @@ class Pembayaran extends Model
         'tgl_bayar',
         'verified_by',
     ];
+    public function periksa()
+    {
+        return $this->belongsTo(Periksa::class, 'id_periksa');
+    }
 }

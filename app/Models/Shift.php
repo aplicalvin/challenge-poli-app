@@ -13,4 +13,8 @@ class Shift extends Model
         'jam_keluar',
         'hari',
     ];
+    public function jadwalJaga()
+    {
+        return $this->hasMany(JadwalJaga::class, 'id_shift');
+    }
 }
