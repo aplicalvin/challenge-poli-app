@@ -68,10 +68,10 @@ Route::middleware(['auth'])->group(function () {
         ])->parameters(['list' => 'obat']);
     });
 
-    // Keuangan Routes
     Route::middleware(['role:admin,kasir'])->prefix('keuangan')->group(function () {
         Route::get('/transaksi', [App\Http\Controllers\TransaksiKeuanganController::class, 'index'])->name('keuangan.transaksi');
         Route::post('/transaksi/{id}/confirm', [App\Http\Controllers\TransaksiKeuanganController::class, 'confirm'])->name('keuangan.transaksi.confirm');
+        Route::post('/transaksi/{id}/reject', [App\Http\Controllers\TransaksiKeuanganController::class, 'reject'])->name('keuangan.transaksi.reject');
         Route::get('/laporan', function () {
             return view('keuangan.laporan');
         })->name('keuangan.laporan');

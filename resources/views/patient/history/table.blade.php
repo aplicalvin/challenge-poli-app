@@ -41,17 +41,27 @@
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
       <div class="flex justify-end gap-2">
-        @if($item->status_periksa === 'menunggu_pembayaran' && (!$item->pembayaran || $item->pembayaran->status_pembayaran !== 'pending'))
-          <button type="button" 
-            class="inline-flex items-center gap-x-2 py-2 px-4 rounded-xl bg-blue-600 border border-transparent text-white hover:bg-blue-700 transition-all duration-200 shadow-sm"
-            onclick="openPaymentModal({{ $item->id }}, 'Rp {{ number_format($item->total_biaya, 0, ',', '.') }}', '{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('d M Y') }}')">
-            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
-            Bayar
-          </button>
-        @elseif($item->pembayaran && $item->pembayaran->status_pembayaran === 'pending')
-          <span class="inline-flex items-center gap-x-1.5 py-2 px-3 rounded-xl text-xs font-medium bg-gray-100 text-gray-500 border border-gray-200">
-            Menunggu Verifikasi
-          </span>
+        @if($item->status_periksa === 'menunggu_pembayaran')
+          @if(!$item->pembayaran || $item->pembayaran->status_pembayaran === 'rejected')
+            <button type="button" 
+              class="inline-flex items-center gap-x-2 py-2 px-4 rounded-xl bg-blue-600 border border-transparent text-white hover:bg-blue-700 transition-all duration-200 shadow-sm"
+              onclick="openPaymentModal({{ $item->id }}, 'Rp {{ number_format($item->total_biaya, 0, ',', '.') }}', '{{ \Carbon\Carbon::parse($item->tgl_periksa)->format('d M Y') }}')">
+              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              {{ $item->pembayaran && $item->pembayaran->status_pembayaran === 'rejected' ? 'Upload Ulang' : 'Bayar' }}
+            </button>
+          @elseif($item->pembayaran->status_pembayaran === 'pending')
+            <div class="flex items-center gap-2">
+              <button type="button" 
+                class="inline-flex items-center gap-x-2 py-2 px-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-600 hover:bg-gray-100 transition-all shadow-sm"
+                onclick="showImage('{{ asset('storage/' . $item->pembayaran->bukti_pembayaran) }}')" data-hs-overlay="#image-preview-modal">
+                <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview
+              </button>
+              <span class="inline-flex items-center gap-x-1.5 py-2 px-3 rounded-xl text-[10px] font-bold bg-yellow-50 text-yellow-700 border border-yellow-200 uppercase tracking-tight">
+                Verifikasi
+              </span>
+            </div>
+          @endif
         @endif
 
         <button type="button" 

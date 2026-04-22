@@ -26,7 +26,7 @@ class TransaksiKeuanganController extends Controller
         // Update status_periksa to bagian_obat
         $periksa->update(['status_periksa' => 'bagian_obat']);
 
-        // Update pembayaran status if exists
+        // Update pembayaran status
         if ($periksa->pembayaran) {
             $periksa->pembayaran->update([
                 'status_pembayaran' => 'verified',
@@ -37,6 +37,23 @@ class TransaksiKeuanganController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Pembayaran berhasil dikonfirmasi.'
+        ]);
+    }
+
+    public function reject(Request $request, $id)
+    {
+        $periksa = Periksa::findOrFail($id);
+        
+        if ($periksa->pembayaran) {
+            $periksa->pembayaran->update([
+                'status_pembayaran' => 'rejected',
+                'verified_by' => Auth::id()
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Pembayaran ditolak.'
         ]);
     }
 }
