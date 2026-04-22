@@ -32,7 +32,7 @@ class TransaksiKeuanganController extends Controller
             Pembayaran::updateOrCreate(
                 ['id_periksa' => $id],
                 [
-                    'status_pembayaran' => 'verified',
+                    'status_pembayaran' => 'lunas',
                     'verified_by' => Auth::id(),
                     'total_bayar' => $periksa->total_biaya,
                     'tgl_bayar' => now()
@@ -49,25 +49,10 @@ class TransaksiKeuanganController extends Controller
     public function reject(Request $request, $id)
     {
         return DB::transaction(function () use ($id) {
-            $periksa = Periksa::findOrFail($id);
-            
-            // Find or create pembayaran record and set to rejected
+            // If rejection happens, we delete the payment record to allow patient to re-upload (since ENUM only has pending/lunas)
             $pembayaran = Pembayaran::where('id_periksa', $id)->first();
-            
             if ($pembayaran) {
-                $pembayaran->update([
-                    'status_pembayaran' => 'rejected',
-                    'verified_by' => Auth::id()
-                ]);
-            } else {
-                // If they reject even before upload, create a rejected record
-                Pembayaran::create([
-                    'id_periksa' => $id,
-                    'status_pembayaran' => 'rejected',
-                    'verified_by' => Auth::id(),
-                    'total_bayar' => $periksa->total_biaya,
-                    'tgl_bayar' => now()
-                ]);
+                $pembayaran->delete();
             }
 
             return response()->json([

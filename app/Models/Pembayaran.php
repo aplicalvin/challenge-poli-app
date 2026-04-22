@@ -19,4 +19,9 @@ class Pembayaran extends Model
     {
         return $this->belongsTo(Periksa::class, 'id_periksa');
     }
+
+    public function verifier()
+    {
+        return $this->belongsTo(User::class, 'verified_by');
+    }
 }

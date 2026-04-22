@@ -75,17 +75,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/transaksi', [App\Http\Controllers\TransaksiKeuanganController::class, 'index'])->name('keuangan.transaksi');
         Route::post('/transaksi/{id}/confirm', [App\Http\Controllers\TransaksiKeuanganController::class, 'confirm'])->name('keuangan.transaksi.confirm');
         Route::post('/transaksi/{id}/reject', [App\Http\Controllers\TransaksiKeuanganController::class, 'reject'])->name('keuangan.transaksi.reject');
-        Route::get('/laporan', function () {
-            return view('keuangan.laporan');
-        })->name('keuangan.laporan');
+        Route::get('/laporan', [App\Http\Controllers\LaporanKeuanganController::class, 'index'])->name('keuangan.laporan');
+        Route::get('/laporan/export', [App\Http\Controllers\LaporanKeuanganController::class, 'exportCsv'])->name('keuangan.laporan.export');
     });
 
     // Riwayat Routes
     Route::middleware(['role:dokter,pasien'])->prefix('riwayat')->group(function () {
         Route::get('/periksa', [App\Http\Controllers\RiwayatPeriksaPasienController::class, 'index'])->name('riwayat.periksa');
-        Route::get('/pembayaran', function () {
-            return view('riwayat.pembayaran');
-        })->name('riwayat.pembayaran');
+        Route::get('/pembayaran', [App\Http\Controllers\RiwayatPembayaranPasienController::class, 'index'])->name('riwayat.pembayaran');
     });
 
     // Role Specific Home Redirects (for the sidebar link logic)
