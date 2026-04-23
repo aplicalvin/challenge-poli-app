@@ -23,4 +23,9 @@ class Poli extends Model
     {
         return $this->belongsTo(User::class, 'edited_by');
     }
+
+    public function ruangs()
+    {
+        return $this->hasMany(Ruang::class, 'id_poli');
+    }
 }

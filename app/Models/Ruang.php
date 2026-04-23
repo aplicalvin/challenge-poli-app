@@ -17,4 +17,9 @@ class Ruang extends Model
     {
         return $this->belongsTo(Poli::class, 'id_poli');
     }
+
+    public function jadwalJaga()
+    {
+        return $this->hasMany(JadwalJaga::class, 'id_ruang');
+    }
 }

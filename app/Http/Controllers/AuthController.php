@@ -42,7 +42,11 @@ class AuthController extends Controller
         $request->validate([
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:8'],
+            'password' => ['required', 'confirmed', 'min:6'],
+            'nama' => ['required', 'string', 'max:255'],
+            'no_ktp' => ['required', 'string', 'max:20'],
+            'no_hp' => ['required', 'string', 'max:20'],
+            'alamat' => ['nullable', 'string'],
         ]);
 
         $user = User::create([
@@ -53,10 +57,20 @@ class AuthController extends Controller
         ]);
 
         // Create Pasien profile immediately
+        $year = date('Y');
+        $month = date('m');
+        $prefix = "RM/$year/$month/";
+        $count = \App\Models\Pasien::where('no_rm', 'like', $prefix . '%')->count() + 1;
+        $no_rm = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT);
+
         \App\Models\Pasien::create([
             'id_user' => $user->id,
-            'nama' => $user->username, // Default name to username
-            'no_rm' => date('Ymd') . '-' . str_pad($user->id, 4, '0', STR_PAD_LEFT), // Generate simple RM number
+            'nama' => $request->nama,
+            'no_ktp' => $request->no_ktp,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat ?? '',
+            'no_rm' => $no_rm,
+            'added_by' => null,
         ]);
 
         Auth::login($user);

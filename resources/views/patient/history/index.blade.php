@@ -20,13 +20,13 @@
       <div>
         <label for="start_date" class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Dari Tanggal</label>
         <input type="date" id="start_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
 
       <div>
         <label for="end_date" class="block text-sm font-medium mb-2 text-gray-700 dark:text-neutral-300">Sampai Tanggal</label>
         <input type="date" id="end_date" onchange="refreshTable()"
-          class="py-2.5 px-4 block w-full border-gray-200 rounded-xl text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          class="py-2.5 px-4 block w-full border border-gray-300 rounded-xl text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
       </div>
 
       <div class="flex gap-2">
@@ -123,7 +123,7 @@
             <label class="block text-sm font-bold text-gray-800 dark:text-white">Upload Bukti Pembayaran</label>
             <div class="mt-2">
               <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" required
-                class="block w-full border border-gray-200 shadow-sm rounded-xl text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400">
+                class="block w-full border border-gray-300 shadow-sm rounded-xl text-sm focus:z-10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-neutral-700 dark:file:text-neutral-400">
               <p class="mt-2 text-xs text-gray-500">Format: JPG, PNG. Max 2MB.</p>
             </div>
           </div>
