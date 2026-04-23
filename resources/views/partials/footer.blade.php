@@ -1,7 +1,9 @@
-<footer class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-200 dark:border-neutral-700">
+<footer
+  class="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-200 dark:border-neutral-700">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
     <div class="text-center md:text-left">
-      <a class="flex items-center justify-center md:justify-start text-xl font-black dark:text-white uppercase tracking-tight" href="/" aria-label="Brand">
+      <a class="flex items-center justify-center md:justify-start text-xl font-black dark:text-white uppercase tracking-tight"
+        href="/" aria-label="Brand">
         <img src="{{ asset('logo-bengkot.png') }}" alt="Logo" class="w-8 h-8 mr-2">
         Poliklinik
       </a>
@@ -11,7 +13,8 @@
     </div>
 
     <div class="text-center">
-      <p class="text-sm text-gray-500 dark:text-neutral-500 font-medium">Jl. Kesehatan No. 123, Jakarta Selatan</p>
+      <p class="text-sm text-gray-500 dark:text-neutral-500 font-medium">Jl. Imam Bonjol No.207, Pendrikan Kidul, Kec.
+        Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia</p>
       <p class="text-xs text-gray-400 dark:text-neutral-600 mt-1">support@poliklinik.app | (021) 1234-5678</p>
     </div>
 

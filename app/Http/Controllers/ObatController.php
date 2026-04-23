@@ -90,4 +90,25 @@ class ObatController extends Controller
             'html' => $html
         ]);
     }
+
+    public function checkAvailableStock($id)
+    {
+        $obat = Obat::findOrFail($id);
+        
+        // Sum of jumlah from detail_periksa_obat where periksa status in ['menunggu_pembayaran', 'bagian_obat', 'sedang_periksa']
+        $pendingQuantity = \App\Models\DetailPeriksaObat::where('id_obat', $id)
+            ->whereHas('periksa', function ($query) {
+                $query->whereIn('status_periksa', ['menunggu_pembayaran', 'bagian_obat', 'sedang_periksa']);
+            })
+            ->sum('jumlah');
+            
+        $available = $obat->stok - $pendingQuantity;
+        
+        return response()->json([
+            'success' => true,
+            'available_stock' => max(0, $available),
+            'current_stock' => $obat->stok,
+            'pending_quantity' => $pendingQuantity
+        ]);
+    }
 }

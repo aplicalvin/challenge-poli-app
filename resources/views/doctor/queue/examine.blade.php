@@ -120,7 +120,59 @@
     calculateTotal();
   }
 
-  function updateRowTotal() {
+  async function updateRowTotal(rowId) {
+    const row = document.getElementById(rowId);
+    if (!row) return;
+
+    const select = row.querySelector('select');
+    const qtyInput = row.querySelector('input[type="number"]');
+    const id = select.value;
+    
+    if (!id) {
+        calculateTotal();
+        return;
+    }
+
+    // Sum all quantities of THIS medicine in the current form
+    let totalInForm = 0;
+    const allRows = document.querySelectorAll('#obat-list > div');
+    allRows.forEach(r => {
+      const s = r.querySelector('select');
+      const q = r.querySelector('input[type="number"]');
+      if (s.value === id) {
+        totalInForm += parseInt(q.value) || 0;
+      }
+    });
+
+    try {
+      const response = await fetch(`/obat/${id}/check-stock`);
+      const result = await response.json();
+
+      if (result.success) {
+        if (totalInForm > result.available_stock) {
+          Swal.fire({
+            title: 'Stok Tidak Mencukupi',
+            text: `Total permintaan obat ini melebihi stok tersedia. Sisa stok tersedia: ${result.available_stock}`,
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          });
+          
+          // Adjust the current row to fit within remaining available stock
+          const otherRowsTotal = totalInForm - (parseInt(qtyInput.value) || 0);
+          const allowed = result.available_stock - otherRowsTotal;
+          qtyInput.value = allowed > 0 ? allowed : 1;
+          
+          if (allowed <= 0 && otherRowsTotal > 0) {
+             // If already used up in other rows, maybe reset this row
+             qtyInput.value = 0;
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Stock check failed', e);
+    }
+
     calculateTotal();
   }
 

@@ -22,6 +22,7 @@
       'route' => 'patient.registration.index',
       'roles' => ['pasien'],
     ],
+
     [
       'label' => 'Master Data',
       'icon' => '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>',
@@ -31,7 +32,6 @@
         ['label' => 'Manajemen Dokter', 'route' => 'admin.dokter'],
         ['label' => 'Manajemen Staff', 'route' => 'admin.staff'],
         ['label' => 'Manajemen Pasien', 'route' => 'admin.pasien'],
-        ['label' => 'Monitor Antrian', 'route' => 'admin.antrian.realtime'],
       ]
     ],
     [
@@ -62,6 +62,12 @@
         ['label' => 'Manajemen Transaksi', 'route' => 'keuangan.transaksi'],
         ['label' => 'Laporan Keuangan', 'route' => 'keuangan.laporan'],
       ]
+    ],
+    [
+      'label' => 'Monitor Antrian',
+      'icon' => '<path d="M2 21a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2zm11-8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>',
+      'route' => 'admin.antrian.realtime',
+      'roles' => ['admin'],
     ],
     [
       'label' => 'Riwayat',

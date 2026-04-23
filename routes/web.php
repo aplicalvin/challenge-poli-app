@@ -61,7 +61,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Obat Routes
-    Route::middleware(['role:admin,apoteker'])->prefix('obat')->group(function () {
+    Route::middleware(['role:admin,apoteker,dokter'])->prefix('obat')->group(function () {
+        Route::get('/{id}/check-stock', [App\Http\Controllers\ObatController::class, 'checkAvailableStock'])->name('obat.check-stock');
         Route::get('/stok', [App\Http\Controllers\ObatController::class, 'stok'])->name('obat.stok');
         Route::get('/layanan', [App\Http\Controllers\LayananFarmasiController::class, 'index'])->name('obat.layanan');
         Route::get('/layanan/{id}', [App\Http\Controllers\LayananFarmasiController::class, 'detail'])->name('obat.layanan.detail');

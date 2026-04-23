@@ -49,13 +49,21 @@
   async function fetchQueues() {
     try {
       const response = await fetch('{{ route("admin.antrian.data") }}');
+      if (!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
       
       if (result.success) {
         renderQueues(result.data);
+      } else {
+        throw new Error(result.message || 'Gagal mengambil data antrian');
       }
     } catch (e) {
       console.error('Fetch error:', e);
+      grid.innerHTML = `
+        <div class="col-span-full py-20 text-center bg-red-50 border border-dashed border-red-300 rounded-3xl dark:bg-red-900/10 dark:border-red-700">
+          <p class="text-red-500 font-medium">Gagal memuat data antrian. Mencoba lagi...</p>
+        </div>
+      `;
     }
   }
 
@@ -88,7 +96,7 @@
           <div class="pt-4 border-t border-gray-100 dark:border-neutral-700 text-center">
             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Sedang Melayani</p>
             <div class="text-7xl font-black text-blue-600 dark:text-blue-400 drop-shadow-sm">
-              ${poli.current_number.toString().padStart(2, '0')}
+              ${poli.current_number === '0' ? '-' : poli.current_number.toString().padStart(2, '0')}
             </div>
           </div>
         </div>

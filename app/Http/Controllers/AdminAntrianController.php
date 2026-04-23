@@ -17,41 +17,43 @@ class AdminAntrianController extends Controller
 
     public function getQueueData()
     {
-        // Get active queues per polyclinic
-        // We look for patients with status 'sedang_periksa' or the latest 'selesai' to show current progress
-        // Actually, the requirement says "current queue number being served"
-        
-        $queues = Poli::with(['jadwalJaga' => function($q) {
-            $q->where('hari', date('l')) // Today's schedules
-              ->with('dokter');
-        }])->get()->map(function($poli) {
-            // Find current patient being examined in this poli
-            $currentServing = Periksa::whereHas('jadwalJaga', function($q) use ($poli) {
-                $q->where('id_poli', $poli->id);
-            })
-            ->where('tgl_periksa', date('Y-m-d'))
-            ->where('status_periksa', 'sedang_periksa')
-            ->orderBy('no_antrian', 'asc')
-            ->first();
+        // Map English day to Indonesian day
+        $days = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+        $todayName = $days[date('l')];
 
-            // If no one is 'sedang_periksa', maybe show the last one 'selesai' or 'menunggu_pembayaran'?
-            // Usually, 'sedang_periksa' is the most accurate for "Now Serving"
-            
-            $doctorName = "-";
-            if ($poli->jadwalJaga->count() > 0) {
-                $doctorName = $poli->jadwalJaga->first()->dokter->nama;
-            }
+        // Find all schedules active today
+        $activeSchedules = JadwalJaga::whereHas('shift', function($q) use ($todayName) {
+            $q->where('hari', $todayName);
+        })
+        ->with(['dokter', 'ruang.poli'])
+        ->get();
+
+        $data = $activeSchedules->map(function($schedule) {
+            // Find current patient being examined in THIS schedule today
+            $currentServing = Periksa::where('id_jadwal_jaga', $schedule->id)
+                ->whereDate('tgl_periksa', date('Y-m-d'))
+                ->where('status_periksa', 'sedang_periksa')
+                ->orderBy('no_antrian', 'asc')
+                ->first();
 
             return [
-                'poli_name' => $poli->nama_poli,
-                'doctor_name' => $doctorName,
+                'poli_name' => $schedule->ruang->poli->nama_poli ?? '-',
+                'doctor_name' => $schedule->dokter->nama,
                 'current_number' => $currentServing ? $currentServing->no_antrian : '0',
             ];
         });
 
         return response()->json([
             'success' => true,
-            'data' => $queues
+            'data' => $data
         ]);
     }
 }

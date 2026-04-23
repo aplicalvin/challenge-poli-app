@@ -82,6 +82,30 @@ class LayananDokterController extends Controller
         try {
             $totalBiaya = 0;
             
+            // Aggregated Medicine Quantities from form
+            $requestedTotals = [];
+            foreach ($request->obats as $item) {
+                $requestedTotals[$item['id']] = ($requestedTotals[$item['id']] ?? 0) + $item['jumlah'];
+            }
+
+            // Backend Stock Validation
+            foreach ($requestedTotals as $id => $totalRequested) {
+                $obat = Obat::find($id);
+                
+                // Calculate pending quantity (same as ObatController@checkAvailableStock)
+                $pendingQuantity = \App\Models\DetailPeriksaObat::where('id_obat', $obat->id)
+                    ->whereHas('periksa', function ($query) {
+                        $query->whereIn('status_periksa', ['menunggu_pembayaran', 'bagian_obat', 'sedang_periksa']);
+                    })
+                    ->sum('jumlah');
+                
+                $available = $obat->stok - $pendingQuantity;
+                
+                if ($totalRequested > $available) {
+                    throw new \Exception("Total permintaan obat '{$obat->nama_obat}' tidak mencukupi. Tersedia: {$available}");
+                }
+            }
+
             foreach ($request->obats as $item) {
                 $obat = Obat::find($item['id']);
                 $subtotal = $obat->harga * $item['jumlah'];
